@@ -1,0 +1,8 @@
+block vars
+  -var pageTitle="All Users"
+extends ../layout
+
+block content
+  .container
+    -for user in users
+      p= user.email

@@ -1,0 +1,38 @@
+block vars
+  -var pageTitle="Sign up Page"
+
+extends ../layout
+
+append content
+  .container
+    form.panel.panel-default(action="/users/" method="post")
+      .panel-body
+
+        .form-group
+          label(for="email") Enter your email
+          input.form-control#email(required name="email" type="email" placeholder="Email")
+
+        .form-group
+          label(for="password") Enter a password
+          input.form-control#password(required name="password" type="password" placeholder="Password")
+
+        .form-group
+          label(for="password-confirm") Confirm password
+          input.form-control#password-confirm(required name="password-confirm" type="password" placeholder="Password")
+
+        button.btn.btn-default(type='submit') Submit
+
+
+block scripts
+  script.
+    $(function(){
+      $('button[type="submit"]').on('click',function(event){
+        var password = $('input[name="password"]').val();
+        var passwordConfirm = $('input[name="password-confirm"]').val();
+
+        if (password !== passwordConfirm){
+          event.preventDefault();
+          alert("Passwords don't match");
+        }
+      })
+    })

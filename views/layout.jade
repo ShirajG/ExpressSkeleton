@@ -1,0 +1,45 @@
+block vars
+
+doctype html
+html(lang='en')
+  head
+    block meta
+      meta(charset='UTF-8')
+      meta(name='viewport', content='width=device-width')
+
+    block title
+      title #{pageTitle}
+
+    block css
+      link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
+      link(rel='stylesheet', href='/css/style.css')
+
+    block js
+      script(src="//code.jquery.com/jquery-1.11.3.min.js")
+
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+
+  block nav
+    ul.nav.nav-tabs
+      li(role="presentation")
+        a(href="#") Home
+      if user
+        li(role="presentation")
+          a(href="/logout") Logout
+      else
+        li(role="presentation")
+          a(href="/users/new") Signup
+        li(role="presentation")
+          a(href="/login") Login
+
+  body
+    block content
+      .jumbotron
+        .container
+          h1= pageTitle
+
+  block footer
+    footer
+
+  block scripts

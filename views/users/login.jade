@@ -1,0 +1,19 @@
+block vars
+  -var pageTitle="Log In"
+
+extends ../layout
+
+append content
+  .container
+    form.panel.panel-default(action="/login" method="post")
+      .panel-body
+
+        .form-group
+          label(for="email") Enter your email
+          input.form-control#email(required name="email" type="email" placeholder="Email")
+
+        .form-group
+          label(for="password") Enter your password
+          input.form-control#password(required name="password" type="password" placeholder="Password")
+
+        button.btn.btn-default(type='submit') Submit
