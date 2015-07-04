@@ -2,3 +2,4 @@ node_modules/
 .sass-cache
 config/credentials.js
 public/css/*.css
+public/css/*.map
