@@ -1,5 +1,6 @@
 var env = process.env.NODE_ENV || 'development';
 var credentials = require('./config/credentials');
+var passport = require('./middleware/passportConfig');
 var express = require('express');
 var session = require('express-session');
 var RedisStore = require('connect-redis')(session);
@@ -32,7 +33,8 @@ app.use(session({
     store: new RedisStore({client: redisClient}),
     secret: credentials.redisSecret
 }));
-app.use(clearErrors);
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Mount routers onto paths
 app.use('/', routes);

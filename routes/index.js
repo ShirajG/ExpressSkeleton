@@ -13,24 +13,13 @@ router.get('/login', function(req,res){
   res.render('users/login.jade');
 });
 // Sets logged in User in session 
-router.post('/login', function(req,res){
-  models.User.find({
-    where: {email: req.body.email}
-  }).then(function(user){
-    if( user ){
-      bcrypt.compare(req.body.password, user.password, function(err,resp){
-        if( resp ){
-          req.session.user = user;
-        } else {
-          req.session.error = 'Incorrect Email or Password';
-        }
-        res.redirect('/');
-      });  
-    } else {
-      req.session.error = 'Incorrect Email or Password';
-      res.redirect('/');  
-    }
-  });
+router.post('/login', passport.authenticate('local',{
+  failureRedirect: '/',
+  failureFlash: true
+}), 
+  function(req,res){
+    req.session.user = req.user;
+    res.redirect('/');
 });
 
 // logout route
