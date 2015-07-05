@@ -12,3 +12,6 @@
   * Right now only the local auth strategy is implemented, many others are possible
   * Details are in middleware/passportConfig.js
 - __connect-flash middleware is in use to set flash messages__
+- __Grunt is included__
+  * The default grunt task will monitor the app for any changes and reload itself.
+  * Sass files are updated on changes as well.
