@@ -52,7 +52,6 @@ module.exports = function (grunt) {
             });
 
             nodemon.on('restart', function () {
-              console.log('server changed');
               setTimeout(function() {
                 require('fs').writeFileSync('.rebooted', 'rebooted');
               }, 1000);
