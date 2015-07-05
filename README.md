@@ -2,13 +2,13 @@
 
 ## An Express Skeleton using Sequelize with postgres
 
-- _Add the file config/credentials.js to store all your credentials in_
+- __Add the file config/credentials.js to store all your credentials in__
   * This file is not included in version control.  
-- _Redis is used as the backend for the session store_
+- __Redis is used as the backend for the session store__
   * Hiredis redis client is in use for better performance
   * Add your configuration to the credentials file under the key `redisConfig[environment]`  
-- _A basic user model is included. You can see how to define your own models [here](http://docs.sequelizejs.com/en/latest/docs/models-definition/)_ 
-- _Passport is used to manage user authentication. More info [here](http://passportjs.org/)_
+- __A basic user model is included. You can see how to define your own models [here](http://docs.sequelizejs.com/en/latest/docs/models-definition/)__
+- __Passport is used to manage user authentication. More info [here](http://passportjs.org/)__
   * Right now only the local auth strategy is implemented, many others are possible
   * Details are in middleware/passportConfig.js
-- _connect-flash middleware is in use to set flash messages_
+- __connect-flash middleware is in use to set flash messages__
