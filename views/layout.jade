@@ -24,7 +24,7 @@ html(lang='en')
     ul.nav.nav-tabs
       li(role="presentation")
         a(href="#") Home
-      if user
+      if session && session.user
         li(role="presentation")
           a(href="/logout") Logout
       else

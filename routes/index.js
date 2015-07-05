@@ -2,10 +2,12 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var bcrypt = require('bcrypt-nodejs');
+var passport = require('../middleware/passportConfig');
+
 
 /* GET home page. */
 router.get('/', function(req, res) {
-  res.render('index', req.session);
+  res.render('index', {session: req.session, flash: req.flash('error')});
 });
 
 // Login route

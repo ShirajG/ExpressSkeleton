@@ -5,8 +5,8 @@ extends layout
 
 append content
   .container
-    if user
-      p Welcome to the site user #{JSON.stringify(user.id)}
-      p #{user.email}
-    if error
-      p #{error}
+    if session && session.user
+      p Welcome to the site user #{JSON.stringify(session.user.id)}
+      p #{session.user.email}
+    if flash
+      p #{flash}

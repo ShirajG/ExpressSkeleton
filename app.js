@@ -13,7 +13,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var users = require('./routes/user');
 var tasks = require('./routes/task');
-var clearErrors = require('./middleware/clearErrors');
+var flash = require('connect-flash');
 var app = express();
 
 
@@ -35,6 +35,7 @@ app.use(session({
 }));
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 // Mount routers onto paths
 app.use('/', routes);
