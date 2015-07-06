@@ -4,7 +4,7 @@ var models = require('../models');
 var bcrypt = require('bcrypt-nodejs');
 
 /* GET users listing. */
-router.get('/', function(req, res) {
+router.get('/users', function(req, res) {
   models.User.findAll({
   }).then(function(users){
     res.render('users/index.jade',{
@@ -14,12 +14,12 @@ router.get('/', function(req, res) {
 });
 
 /* Serve signup form */
-router.get('/new', function(req, res) {
+router.get('/user/new', function(req, res) {
   res.render("users/new.jade");
 });
 
 /* Create user in DB */
-router.post('/', function(req, res) {
+router.post('/users', function(req, res) {
   bcrypt.hash(req.body.password,null,null,function(err, hash){
     models.User.create({
       email: req.body.email,
@@ -37,7 +37,7 @@ router.post('/', function(req, res) {
 });
 
 // Delete a user
-router.delete('/:id', function(req, res) {
+router.delete('user/:id', function(req, res) {
   models.User.find({
     where: {id: req.param('id')},
     include: [models.Task]
@@ -53,12 +53,12 @@ router.delete('/:id', function(req, res) {
 });
 
 // Edit a user
-router.post('/:id/edit', function(req, res) {
+router.post('user/:id/edit', function(req, res) {
   res.send("User updated");
 });
 
 /* Show individual user */
-router.get('/:id', function(req, res) {
+router.get('user/:id', function(req, res) {
   // Query the database to find the user.
   res.send(req.params.id);
 });
