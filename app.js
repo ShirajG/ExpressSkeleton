@@ -37,8 +37,8 @@ app.use(passport.session());
 app.use(flash());
 
 // Mount routers onto paths
-app.use('/', require('./routes/index')     );
-app.use('/', require('./routes/user') );
+app.use('/', require('./routes/index.js')     );
+app.use('/', require('./routes/user.js') );
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -51,7 +51,6 @@ app.use(function(req, res, next) {
 
 // development error handler
 // will print stacktrace
-
 if (app.get('env') === 'development') {
     app.use(function(err, req, res, next) {
         res.status(err.status || 500);
@@ -73,6 +72,5 @@ app.use(function(err, req, res, next) {
         title: 'error'
     });
 });
-
 
 module.exports = app;

@@ -8,5 +8,6 @@ append content
     if session && session.user
       p Welcome to the site user #{JSON.parse(session.user.profile).nick}
       p #{session.user.email}
+      p #{session.user.id}
     if flash
       p #{flash}
