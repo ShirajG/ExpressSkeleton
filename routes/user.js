@@ -23,7 +23,12 @@ router.post('/', function(req, res) {
   bcrypt.hash(req.body.password,null,null,function(err, hash){
     models.User.create({
       email: req.body.email,
-      password: hash
+      password: hash,
+      profile: JSON.stringify(
+        {
+          nick: req.body.nick
+        }
+      )
     }).then(function(user){
       req.session.user = user;
       res.redirect('/');

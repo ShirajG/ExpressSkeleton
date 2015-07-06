@@ -6,7 +6,7 @@ extends layout
 append content
   .container
     if session && session.user
-      p Welcome to the site user #{JSON.stringify(session.user.id)}
+      p Welcome to the site user #{JSON.parse(session.user.profile).nick}
       p #{session.user.email}
     if flash
       p #{flash}

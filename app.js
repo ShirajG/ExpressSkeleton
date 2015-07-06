@@ -10,12 +10,11 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var routes = require('./routes/index');
-var users = require('./routes/user');
-var tasks = require('./routes/task');
 var flash = require('connect-flash');
 var app = express();
 
+// Write a config.json file from credentials.js for use with sequelize-cli
+require('fs').writeFileSync('./config/config.json',JSON.stringify(require('./config/credentials.js').database));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -38,9 +37,9 @@ app.use(passport.session());
 app.use(flash());
 
 // Mount routers onto paths
-app.use('/', routes);
-app.use('/users', users);
-app.use('/tasks', tasks);
+app.use('/', require('./routes/index')     );
+app.use('/users', require('./routes/user') );
+app.use('/tasks', require('./routes/task') );
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {
