@@ -24,14 +24,12 @@ html(lang='en')
     ul.nav.nav-tabs
       li(role="presentation")
         a(href="#") Home
-      if session && session.user
+      if session && session.passport.user
         li(role="presentation")
           a(href="/logout") Logout
       else
         li(role="presentation")
-          a(href="/user/new") Signup
-        li(role="presentation")
-          a(href="/login") Login
+          a(href="/auth/google") Login with Google
 
   body
     block content
