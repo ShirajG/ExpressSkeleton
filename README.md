@@ -15,3 +15,4 @@
 - __Grunt is included__
   * The default grunt task will monitor the app for any changes and reload itself.
   * Sass files are updated on changes as well.
+  * The build task will concatenate and minify all bower dependencies.
