@@ -10,15 +10,11 @@ html(lang='en')
     block title
       title #{pageTitle}
 
-    block css
-      link(rel="stylesheet", href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css")
-      link(rel='stylesheet', href='/css/style.css')
+    link(rel='stylesheet', href='/css/build.css')
+    script(src="js/build.min.js")
 
-    block js
-      script(src="//code.jquery.com/jquery-1.11.3.min.js")
-
-      if ENV_DEVELOPMENT
-        script(src='http://localhost:35729/livereload.js')
+    if ENV_DEVELOPMENT
+      script(src='http://localhost:35729/livereload.js')
 
   block nav
     ul.nav.nav-tabs

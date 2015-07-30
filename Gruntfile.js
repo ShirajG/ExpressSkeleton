@@ -6,34 +6,47 @@ module.exports = function (grunt) {
   // Project config
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    concat: {
+      css: {
+        src: ['assets/css/build.css', 'assets/css/style.css'],
+        dest: 'public/css/build.css'
+      }
+    },
     bower_concat: {
       all: {
-        dest: 'js/build.js'
+        dest: 'assets/js/build.js',
+        cssDest: 'assets/css/build.css',
+        mainFiles: {
+          bootstrap: 'dist/css/bootstrap.min.css'
+        }
       }
     },
     uglify:{
-      files:{
-        'js/build.min.js':'js/build.js'
-      },
-      options:{
-        mangle: true,
-        compress: true
+      bower:{
+        files:{
+          'public/js/build.min.js':'assets/js/build.js'
+        },
+        options:{
+          mangle: true,
+          compress: true
+        }
       }
     },
     sass: {
       options: {
-        sourceMap: true
+        sourceMap: true,
+        outputStyle: 'compressed'
       },
       dist: {
         files: {
-          './public/css/style.css': './public/css/style.scss'
+          'assets/css/style.css': 'assets/css/style.scss'
         }
       }
     },
     watch: {
       css:{
-        files: './public/css/*.scss',
-        tasks: ['sass'],
+        files: 'assets/css/*.scss',
+        tasks: ['sass', 'concat:css'],
         options: {
           livereload: true
         }
@@ -84,5 +97,5 @@ module.exports = function (grunt) {
     }
   });
   grunt.registerTask('default', ['concurrent']);
-  grunt.registerTask('build', ['bower_concat','uglify']);
+  grunt.registerTask('build', ['bower_concat','sass','concat:css', 'uglify:bower']);
 };

@@ -4,3 +4,4 @@ config/credentials.js
 public/css/*.css
 public/css/*.map
 config/config.json
+bower_components
