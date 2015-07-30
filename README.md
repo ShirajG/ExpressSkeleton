@@ -9,7 +9,7 @@
   * Add your configuration to the credentials file under the key `redisConfig[environment]`  
 - __A basic user model is included. You can see how to define your own models [here](http://docs.sequelizejs.com/en/latest/docs/models-definition/)__
 - __Passport is used to manage user authentication. More info [here](http://passportjs.org/)__
-  * Right now only the local auth strategy is implemented, many others are possible
+  * Google Oauth is used for user login.
   * Details are in middleware/passportConfig.js
 - __connect-flash middleware is in use to set flash messages__
 - __Grunt is included__
