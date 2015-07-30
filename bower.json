@@ -1,0 +1,17 @@
+{
+  "name": "ExpressSkeleton",
+  "version": "0.0.0",
+  "homepage": "https://github.com/ShirajG/ExpressSkeleton",
+  "authors": [
+    "Shiraj Ganguly <shirajganguly@gmail.com>"
+  ],
+  "main": "bin/www",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
