@@ -6,6 +6,20 @@ module.exports = function (grunt) {
   // Project config
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
+    bower_concat: {
+      all: {
+        dest: 'js/build.js'
+      }
+    },
+    uglify:{
+      files:{
+        'js/build.min.js':'js/build.js'
+      },
+      options:{
+        mangle: true,
+        compress: true
+      }
+    },
     sass: {
       options: {
         sourceMap: true
@@ -70,4 +84,5 @@ module.exports = function (grunt) {
     }
   });
   grunt.registerTask('default', ['concurrent']);
+  grunt.registerTask('build', ['bower_concat','uglify']);
 };
