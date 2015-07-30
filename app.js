@@ -12,6 +12,9 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var flash = require('connect-flash');
 var app = express();
+var jade = require("jade");
+var babel = require("jade-babel");
+jade.filters.babel = babel({});
 
 // Write a config.json file from credentials.js for use with sequelize-cli
 require('fs').writeFileSync('./config/config.json',JSON.stringify(require('./config/credentials.js').database));
