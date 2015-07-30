@@ -8,23 +8,11 @@ var passport = require('../middleware/passportConfig');
 router.get('/', function(req, res) {
   var locals = {
     session: req.session, 
-    flash: req.flash('error')
+    flash: req.flash('error'),
+    user: req.user
   };
-
-  if(req.session.passport.user){
-    models.User.find({
-      where: {
-        'profile.id': req.session.passport.user
-      }
-    }).then(function(user){
-      locals.user = user;
-    }).then(function(){
-      res.render('index',locals);
-    });
-  } else {
-    res.render('index', locals);
-  }
-
+  
+  res.render('index', locals);
 });
 
 // logout route

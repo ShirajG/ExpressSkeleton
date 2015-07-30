@@ -13,39 +13,15 @@ passport.use(new GoogleStrategy({
   function(accessToken, refreshToken, profile, done){
     process.nextTick(function(){
       models.User.findOrCreate({
-        where: { 'profile.id' : profile.id.toString() },
+        where: { 'profile.id' : profile.id },
         defaults: {
           profile: profile._json,
-          'profile.accessToken' : accessToken,
-          'profile.refreshToken' : refreshToken
+          'profile.accessToken': accessToken,
+          'profile.refreshToken': refreshToken
         }
       }).then( function(user){
-        done(null,user[0]);
+        done(null, user[0]);
       });
-    });
-  }
-));
-
-passport.use(new LocalStrategy({
-  usernameField: 'email'
-},
-  function(email, password, done){
-    models.User.find({
-       where: {email: email}
-     }).then(function(user){
-       if( user ){
-         bcrypt.compare(password, user.password, function(err,resp){
-           if( resp ){
-             return done(null, user);
-           } else {
-             return done(null, false, {message: "Incorrect password."});
-           }
-         });
-       } else {
-          return done(null, false, {message: "Incorrect  email."});
-       }
-    }).catch(function(err){
-      console.log(err);
     });
   }
 ));
